@@ -14,9 +14,9 @@ To use this code, most versions of python 3 should work. In particular, python 3
 ### Use your local python environment
 If you already have python 3 installed on your system, the simplest thing to do is download or checkout the code from GitHub.  Then in the DORIS directory, run the following commands:
 
-+ cd path/to/DORIS
-+ pip install -r requirements.txt
-+ pip install .
+    cd path/to/DORIS
+    pip install -r requirements.txt
+    pip install .
 
 ### Use Docker
 
@@ -24,9 +24,9 @@ Install Docker on your system. Available for most versions of Windows, Linux, an
 
 Download or clone this repository. Then, from a command prompt:
 
-+ cd path/to/DORIS
-+ docker build -t DORIS:1.0
-+ docker run -it DORIS:1.0 /bin/sh
+    cd path/to/DORIS
+    docker build -t DORIS:1.0
+    docker run -it DORIS:1.0 /bin/sh
 
 This will bring up a virtual environment where commands can be executed. 
 
@@ -34,14 +34,14 @@ This will bring up a virtual environment where commands can be executed.
 
 Now, you're ready to run the commands. To run our NGS analysis, use this command:
 
-python scripts/ngs.py --range 0-26 --fastq_directory ./data/StrippedFastQ
+    python scripts/ngs.py --range 0-26 --fastq_directory ./data/StrippedFastQ
 
 To perform a Monte Carlo simulation to design primers against a given codeword size:
 
-python3 scripts/primer_vs_density.py --codeword-size 6 --library-size=0 --csv density_cw6_lib0_short_t0.csv
+    python3 scripts/primer_vs_density.py --codeword-size 6 --library-size=0 --csv density_cw6_lib0_short_t0.csv
 
 Note, these runs can take a long time.  There is a makefile in scripts that will run all of the simulations used to produce the data in the paper.
 
 To plot the result of our previous runs:
 
-python3 scripts/plot-density-tradeoff.py ./data/density_results/*
+    python3 scripts/plot-density-tradeoff.py ./data/density_results/*
