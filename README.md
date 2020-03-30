@@ -91,7 +91,7 @@ This command produces a CSV file named density_cw6_lib0_short_t0.csv, as specifi
 
 There is a makefile in scripts that will run all of the simulations used to produce the data in the paper.  To collect all data from scratch, this will take multiple days of execution time on a single CPU. We recommend running all of the jobs in parallel on an HPC cluster. 
 
-For convenience, we are provided result from our own simulations in data/density_simulations. To plot the result of our previous runs:
+For convenience, we are provided result from our own simulations in data/density_results. To plot the result of our previous runs:
 
     python3 scripts/plot-density-tradeoff.py ./data/density_results/*
     
