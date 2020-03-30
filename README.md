@@ -1,9 +1,20 @@
 # DORIS
-[![Build Status](https://travis-ci.com/jamesmtuck/DORIS.svg?token=rCvdBqMzwWyNvxxUUbSh&branch=master)](https://travis-ci.com/jamesmtuck/DORIS)
 
 Code associated with DORIS. Reference: 
 
 Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-based information storage." doi: https://doi.org/10.1101/836429.
+
+[![Build Status](https://travis-ci.com/jamesmtuck/DORIS.svg?token=rCvdBqMzwWyNvxxUUbSh&branch=master)](https://travis-ci.com/jamesmtuck/DORIS)
+![GitHub](https://img.shields.io/github/license/jamesmtuck/DORIS)
+
+- [Overview](#overview)
+- [Documentation](#documentation)
+- [System Requirements](#system-requirements)
+- [Installation Guide](#installation-guide)
+- [Setting up the development environment](#setting-up-the-development-environment)
+- [License](#license)
+- [Issues](https://github.com/jamesmtuck/DORIS/issues)
+
 
 ## Compatibility
 
