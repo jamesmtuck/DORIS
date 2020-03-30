@@ -1,9 +1,5 @@
 # DORIS
 
-Code associated with DORIS. Reference: 
-
-Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. *DORIS: Dynamic DNA-based information storage.* doi: https://doi.org/10.1101/836429.
-
 [![Build Status](https://travis-ci.com/jamesmtuck/DORIS.svg?token=rCvdBqMzwWyNvxxUUbSh&branch=master)](https://travis-ci.com/jamesmtuck/DORIS)
 ![GitHub](https://img.shields.io/github/license/jamesmtuck/DORIS)
 
@@ -11,15 +7,18 @@ Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. *DORIS: Dynamic DNA-
 - [Documentation](#documentation)
 - [System Requirements](#system-requirements)
 - [Installation Guide](#installation-guide)
-- [Setting up the development environment](#setting-up-the-development-environment)
 - [License](#license)
 - [Issues](https://github.com/jamesmtuck/DORIS/issues)
 
 # Overview
 
+Code associated with DORIS. Reference: 
+
+Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. *DORIS: Dynamic DNA-based information storage.* doi: https://doi.org/10.1101/836429.
 
 # Documentation
 
+As documentation becomes available, it will be placed under the docs folder.
 
 # System Requirements
 
@@ -37,30 +36,46 @@ To use this code, most versions of python 3 should work. In particular, python 3
 
 ### Python Dependences
 
+Our code has been tested on python versions 3.5 to 3.8. It has the following dependences:
 
+```
+nose
+sphinx
+editdistance
+statistics
+biopython
+matplotlib
+pandas
+numpy
+scipy
+primer3-py
+python-Levenshtein
+```
 
-## Installation Guide
+# Installation Guide
 
-### Use your local python environment
+## Use your local python environment
 If you already have python 3 installed on your system, the simplest thing to do is download or checkout the code from GitHub.  Then in the DORIS directory, run the following commands:
 
-    cd path/to/DORIS
+    git clone https://github.com/jamesmtuck/DORIS
+    cd DORIS
     pip install -r requirements.txt
     pip install .
 
-### Use Docker
+## Use Docker
 
 Install Docker on your system. Available for most versions of Windows, Linux, and MacOS.
 
 Download or clone this repository. Then, from a command prompt:
 
-    cd path/to/DORIS
+    git clone https://github.com/jamesmtuck/DORIS
+    cd DORIS
     docker build -t doris:1.0 .
     docker run -it doris:1.0 /bin/bash
 
 This will bring up a virtual environment where commands can be executed. 
 
-### Re-run our analyses
+## Quick Run our analyses
 
 Now, you're ready to run the commands. To run our NGS analysis, use this command:
 
@@ -75,3 +90,9 @@ Note, these runs can take a long time.  There is a makefile in scripts that will
 To plot the result of our previous runs:
 
     python3 scripts/plot-density-tradeoff.py ./data/density_results/*
+    
+#License
+
+This software is released under the MIT License.
+
+
