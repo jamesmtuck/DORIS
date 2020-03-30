@@ -12,7 +12,3 @@ RUN pip3 --no-cache-dir install -r requirements.txt
 
 # Set python path to include the code in the doris module
 ENV "PYTHONPATH" "/DORIS/doris"
-
-#ENTRYPOINT ["python"]
-
-#CMD ["server.py"]
