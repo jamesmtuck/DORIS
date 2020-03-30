@@ -34,7 +34,7 @@ This will bring up a virtual environment where commands can be executed.
 
 Now, you're ready to run the commands. To run our NGS analysis, use this command:
 
-    python scripts/ngs.py --range 0-26 --fastq_directory ./data/StrippedFastQ
+    python3 scripts/ngs.py --range 0-26 --fastq_directory ./data/StrippedFastQ
 
 To perform a Monte Carlo simulation to design primers against a given codeword size:
 
