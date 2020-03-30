@@ -32,7 +32,7 @@ This package is supported for macOS and Linux. The package has been tested on th
 + macOS: Catalina 10.15.3
 + Linux: Ubuntu 18.04.3
 
-To use this code, most versions of python 3 should work. In particular, python 3.5 through 3.8 pass in Travis-CI. The relevant package dependences are listed in the requirements.txt file. 
+Note that most OSes will support our software by using Docker.
 
 ### Python Dependences
 
@@ -64,18 +64,18 @@ If you already have python 3 installed on your system, the simplest thing to do 
 
 ## Use Docker
 
-Install Docker on your system. Available for most versions of Windows, Linux, and MacOS.
+If you do not already have Docker, you will need to install Docker on your system. It is available for free for most versions of Windows, Linux, and MacOS. You may need to be the owner or administrator of the system to install Docker.
 
-Download or clone this repository. Then, from a command prompt:
+Instructions for setting up Docker.  From a command prompt, run these commands:
 
     git clone https://github.com/jamesmtuck/DORIS
     cd DORIS
     docker build -t doris:1.0 .
     docker run -it doris:1.0 /bin/bash
 
-This will bring up a virtual environment where commands can be executed. 
+This will bring up a command prompt in a Linux container where commands can be executed. 
 
-## Quick Run our analyses
+## Run Our Analyses
 
 Now, you're ready to run the commands. To run our NGS analysis, use this command:
 
