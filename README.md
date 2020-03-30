@@ -25,8 +25,8 @@ Install Docker on your system. Available for most versions of Windows, Linux, an
 Download or clone this repository. Then, from a command prompt:
 
     cd path/to/DORIS
-    docker build -t DORIS:1.0
-    docker run -it DORIS:1.0 /bin/sh
+    docker build -t doris:1.0 .
+    docker run -it doris:1.0 /bin/bash
 
 This will bring up a virtual environment where commands can be executed. 
 
