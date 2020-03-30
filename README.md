@@ -3,7 +3,7 @@
 
 Code associated with DORIS. Reference: 
 
-Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-based information storagea," Spring 2020. doi: https://doi.org/10.1101/836429.
+Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-based information storage," Spring 2020. doi: https://doi.org/10.1101/836429.
 
 ## Compatibility
 
@@ -11,11 +11,26 @@ To use this code, most versions of python 3 should work. In particular, python 3
 
 ## Installation 
 
+### Use your local python environment
 If you already have python 3 installed on your system, the simplest thing to do is download or checkout the code from GitHub.  Then in the DORIS directory, run the following commands:
 
 + cd path/to/DORIS
 + pip install -r requirements.txt
 + pip install .
+
+### Use Docker
+
+Install Docker on your system. Available for most versions of Windows, Linux, and MacOS.
+
+Download or clone this repository. Then, from a command prompt:
+
++ cd path/to/DORIS
++ docker build -t DORIS:1.0
++ docker run -it DORIS:1.0 /bin/sh
+
+This will bring up a virtual environment where commands can be executed. 
+
+### Re-run our analyses
 
 Now, you're ready to run the commands. To run our NGS analysis, use this command:
 
