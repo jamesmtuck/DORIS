@@ -18,7 +18,7 @@ Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. *DORIS: Dynamic DNA-
 
 # Documentation
 
-As documentation becomes available, it will be placed under the docs folder.
+As documentation for the softwarwe becomes available, it will be placed under the docs folder.
 
 # System Requirements
 
@@ -91,7 +91,7 @@ To plot the result of our previous runs:
 
     python3 scripts/plot-density-tradeoff.py ./data/density_results/*
     
-#License
+# License
 
 This software is released under the MIT License.
 
