@@ -18,6 +18,6 @@ setup(
     author_email='jtuck@ncsu.edu',
     url='https://github.com/jamesmtuck/DORIS',
     license=license,
-    packages=find_packages(exclude=('scripts','data')),
+    packages=find_packages(exclude=('scripts','data','docs')),
     ext_modules= []
 )
