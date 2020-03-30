@@ -13,9 +13,9 @@ To use this code, most versions of python 3 should work. In particular, python 3
 
 If you already have python 3 installed on your system, the simplest thing to do is download or checkout the code from GitHub.  Then in the DORIS directory, run the following commands:
 
-cd path/to/DORIS
-pip install -r requirements.txt
-pip install .
++ cd path/to/DORIS
++ pip install -r requirements.txt
++ pip install .
 
 Now, you're ready to run the commands. To run our NGS analysis, use this command:
 
