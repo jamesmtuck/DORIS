@@ -3,7 +3,7 @@
 
 Code associated with DORIS. Reference: 
 
-Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-based information storage," Spring 2020. doi: https://doi.org/10.1101/836429.
+Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-based information storage." doi: https://doi.org/10.1101/836429.
 
 ## Compatibility
 
