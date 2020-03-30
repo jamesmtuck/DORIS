@@ -80,17 +80,23 @@ This will bring up a command prompt in a Linux container where commands can be e
 Now, you're ready to run the commands. To run our NGS analysis, use this command:
 
     python3 scripts/ngs.py --range 0-26 --fastq_directory ./data/StrippedFastQ
+    
+This command should run to completion within a few minutes. The result of this script is a directory named DORIS_DATA that contains files with analysis. 
 
 To perform a Monte Carlo simulation to design primers against a given codeword size:
 
     python3 scripts/primer_vs_density.py --codeword-size 6 --library-size=0 --csv density_cw6_lib0_short_t0.csv
 
-Note, these runs can take a long time.  There is a makefile in scripts that will run all of the simulations used to produce the data in the paper.
+This command produces a CSV file named density_cw6_lib0_short_t0.csv, as specified in the command line. Note, these runs can take a long time (many hours, depending on the speed of the CPU).  
 
-To plot the result of our previous runs:
+There is a makefile in scripts that will run all of the simulations used to produce the data in the paper.  To collect all data from scratch, this will take multiple days of execution time on a single CPU. We recommend running all of the jobs in parallel on an HPC cluster. 
+
+For convenience, we are provided result from our own simulations in data/density_simulations. To plot the result of our previous runs:
 
     python3 scripts/plot-density-tradeoff.py ./data/density_results/*
     
+This command runs in a few seconds and produces a file named CodewordVsDensity.png.    
+   
 # License
 
 This software is released under the MIT License.
