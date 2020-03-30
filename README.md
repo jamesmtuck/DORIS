@@ -71,7 +71,7 @@ Instructions for setting up Docker.  From a command prompt, run these commands:
     git clone https://github.com/jamesmtuck/DORIS
     cd DORIS
     docker build -t doris:1.0 .
-    docker run -it doris:1.0 /bin/bash
+    docker run -it -v `pwd`:/DORIS doris:1.0 /bin/bash
 
 This will bring up a command prompt in a Linux container where commands can be executed. 
 
