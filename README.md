@@ -2,7 +2,7 @@
 
 Code associated with DORIS. Reference: 
 
-Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-based information storage." doi: https://doi.org/10.1101/836429.
+Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. *DORIS: Dynamic DNA-based information storage.* doi: https://doi.org/10.1101/836429.
 
 [![Build Status](https://travis-ci.com/jamesmtuck/DORIS.svg?token=rCvdBqMzwWyNvxxUUbSh&branch=master)](https://travis-ci.com/jamesmtuck/DORIS)
 ![GitHub](https://img.shields.io/github/license/jamesmtuck/DORIS)
@@ -15,12 +15,31 @@ Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-
 - [License](#license)
 - [Issues](https://github.com/jamesmtuck/DORIS/issues)
 
+# Overview
 
-## Compatibility
+
+# Documentation
+
+
+# System Requirements
+
+## Hardware Requirements
+DORIS requires only a standard computer with enough RAM and compute power to support the needed operations.
+
+## Software Requirements
+### OS Requirements
+This package is supported for macOS and Linux. The package has been tested on the following systems:
+
+macOS: 10.15.3
+Linux: Ubuntu 18.04.3
 
 To use this code, most versions of python 3 should work. In particular, python 3.5 through 3.8 pass in Travis-CI. The relevant package dependences are listed in the requirements.txt file. 
 
-## Installation 
+### Python Dependences
+
+
+
+## Installation Guide
 
 ### Use your local python environment
 If you already have python 3 installed on your system, the simplest thing to do is download or checkout the code from GitHub.  Then in the DORIS directory, run the following commands:
