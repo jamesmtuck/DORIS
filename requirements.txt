@@ -1,0 +1,12 @@
+nose
+sphinx
+editdistance
+statistics
+biopython
+matplotlib
+pandas
+numpy
+scipy
+primer3-py
+python-Levenshtein
+

@@ -1,0 +1,8 @@
+kind,codeword_size,pd,ld,lib_size,simulations,estimated_primers
+primer_density_study,7,6,6,10000,500,72
+primer_density_study,7,6,6,10000,1500,223
+primer_density_study,7,6,6,10000,3500,486
+primer_density_study,7,6,6,10000,13500,1578
+primer_density_study,7,6,6,10000,28500,2751
+primer_density_study,7,6,6,10000,53500,4112
+primer_density_study,7,6,6,10000,103500,5949
