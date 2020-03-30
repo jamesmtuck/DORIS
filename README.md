@@ -1,2 +1,32 @@
 # DORIS
-Code associated with DORIS: Dynamic DNA-based information storage.
+[![Build Status](https://travis-ci.com/jamesmtuck/DORIS.svg?token=rCvdBqMzwWyNvxxUUbSh&branch=master)](https://travis-ci.com/jamesmtuck/DORIS)
+
+Code associated with DORIS. Reference: 
+
+Kevin N. Lin, Kevin Volkel, James M. Tuck, Albert J. Keung. "DORIS: Dynamic DNA-based information storagea," Spring 2020. doi: https://doi.org/10.1101/836429.
+
+## Compatibility
+
+To use this code, most versions of python 3 should work. In particular, python 3.5 through 3.8 pass in Travis-CI. The relevant package dependences are listed in the requirements.txt file. 
+
+## Installation 
+
+If you already have python 3 installed on your system, the simplest thing to do is download or checkout the code from GitHub.  Then in the DORIS directory, run the following commands:
+
+cd path/to/DORIS
+pip install -r requirements.txt
+pip install .
+
+Now, you're ready to run the commands. To run our NGS analysis, use this command:
+
+python scripts/ngs.py --range 0-26 --fastq_directory ./data/StrippedFastQ
+
+To perform a Monte Carlo simulation to design primers against a given codeword size:
+
+python3 scripts/primer_vs_density.py --codeword-size 6 --library-size=0 --csv density_cw6_lib0_short_t0.csv
+
+Note, these runs can take a long time.  There is a makefile in scripts that will run all of the simulations used to produce the data in the paper.
+
+To plot the result of our previous runs:
+
+python3 scripts/plot-density-tradeoff.py ./data/density_results/*
