@@ -29,8 +29,8 @@ DORIS requires only a standard computer with enough RAM and compute power to sup
 ### OS Requirements
 This package is supported for macOS and Linux. The package has been tested on the following systems:
 
-macOS: 10.15.3
-Linux: Ubuntu 18.04.3
++ macOS: Catalina 10.15.3
++ Linux: Ubuntu 18.04.3
 
 To use this code, most versions of python 3 should work. In particular, python 3.5 through 3.8 pass in Travis-CI. The relevant package dependences are listed in the requirements.txt file. 
 
