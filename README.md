@@ -81,7 +81,7 @@ Now, you're ready to run the commands. To run our NGS analysis, use this command
 
     python3 scripts/ngs.py --range 0-26 --fastq_directory ./data/StrippedFastQ
     
-This command should run to completion within a few minutes. The result of this script is a directory named DORIS_DATA that contains files with analysis. 
+This command should run to completion within a few minutes. The result of this script is a directory named DORIS_DATA that contains files with analysis. --range specifies the range of fastq files from the directory specified by --fastq_directory to run the analysis that the analysis will run on in one process. The order of fastq files is based on the pyton sort() order of the files in the fastq directory. After running analysis over a set of fastq files, two output files will be created for each group of files in the DORIS_DATA directory. One being *_count.csv, a csv file that contains the number of occurrences for each barcode for each analyzed fastq. A total number of reads is also provided for each fastq file. The second file is *_error_rate.csv that shows the base-position error rate for the payload region for each of the 'NNN' and 'NNNNN' barcodes for each fastq file. Position '0' of the error rates corresponds to the first base of the payload region. The prefix of each of these file types will follow that of the name of the first fastq file indicated by the --range argument.
 
 To perform a Monte Carlo simulation to design primers against a given codeword size:
 

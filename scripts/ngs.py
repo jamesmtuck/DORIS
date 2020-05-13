@@ -1,7 +1,7 @@
 '''
 Author: Kevin Volkel
 filename: DORIS_NGS.py
-Description: Strand analaysis for the DORIS project
+Description: NGS strand analaysis for the DORIS project
 '''
 
 ###GLOBALS###
@@ -215,6 +215,8 @@ def analyze_strands(file_base_name,file_key_name,strand_array,data_dictionary):
         find_FW=strand.find(reverse_p)
         find_RC=strand.find(reverse_p_RC)
         _strand=""
+
+        #check if strand is forward or reverse, then find the start and endpoints for the reverse primer
         if not find_FW == -1:
             #found forward strand
             start_point=find_FW
@@ -224,7 +226,7 @@ def analyze_strands(file_base_name,file_key_name,strand_array,data_dictionary):
             assert end_point>=0
             assert start_point>=0
         elif not find_RC == -1:
-            #found the reverse complement
+            #found the reverse complement of a strand, calculate the reverse complement
             _strand=calculate_reverse_compliment(strand)
             end_point=min(len(strand)-find_RC,len(_strand)-1)
             start_point=end_point-len(reverse_p)
@@ -236,12 +238,15 @@ def analyze_strands(file_base_name,file_key_name,strand_array,data_dictionary):
 
         assert not _strand == ""
         #know the bound points, end_points are non-inclusive, process _strand now
-        if _strand[end_point]=='G':
+        if _strand[end_point]=='G':#First base after reverse primer should be 'G' for NNNNN barcoes
+
+            #calculate the edit distance between the payload of the strand with that of the expected strand
             N_5_payload=payload[file_strand_archs[file_base_name]["payload_1"]]
             N_5_start=min(end_point+6,len(_strand)-1)
             N_5_end=min(end_point+6+len(N_5_payload),len(_strand))
             lv_N_5_payload=lv.distance(N_5_payload,_strand[N_5_start:N_5_end])
             payload_ld=lv.distance(payload[file_strand_archs[file_base_name]["payload_1"]],payload[file_strand_archs[file_base_name]["payload_2"]])
+            #compare edit_distance(ngs,N_5) and edit_distance(N_5,N3) 
             if lv_N_5_payload < payload_ld/2 or (payload_ld==0 and lv_N_5_payload<7):
                 #we have a NNNNN-5 base barcode strand
                 barcode_start=end_point+1
@@ -249,6 +254,7 @@ def analyze_strands(file_base_name,file_key_name,strand_array,data_dictionary):
                 barcode=_strand[barcode_start:barcode_end]
                 assert len(barcode)==5
                 data_dictionary[count_key][barcode_to_index(barcode)]+=1 #count barcode occurance
+            #calculate error rates for the NNNNN barcodes
             if lv_N_5_payload < payload_ld/2 or (payload_ld==0 and lv_N_5_payload<7):
                 edit_operations=lv.editops(N_5_payload,_strand[end_point+6:end_point+6+len(N_5_payload)])
                 for op in edit_operations:
@@ -265,16 +271,21 @@ def analyze_strands(file_base_name,file_key_name,strand_array,data_dictionary):
             reference_start=_strand.find(reference)
             if reference_start==-1: continue
             #reference occurs after the barcode
+
+            #calculate edit distance for ngs strand
             NNN_3_payload=payload[file_strand_archs[file_base_name]["payload_2"]]
             lv_NNN_3_payload=lv.distance(NNN_3_payload,_strand[end_point:end_point+len(NNN_3_payload)])
             pre_barcode_start=reference_start-4
+            #caclulate edit distance for payload_1 and payload 2
             payload_ld=lv.distance(payload[file_strand_archs[file_base_name]["payload_1"]],payload[file_strand_archs[file_base_name]["payload_2"]])
+            #make sure edit distance is close enough to payload_2 to ensure high confidence in NNN strand
             if _strand[pre_barcode_start]=='A' and  lv_NNN_3_payload<payload_ld/2: 
                 #high confidence we found a barcode
                 barcode_start=pre_barcode_start+1
                 barcode=_strand[barcode_start:reference_start]
                 assert len(barcode)==3
                 data_dictionary[count_key][barcode_to_index(barcode)]+=1
+            #calculate error rates for the NNN barcode
             if lv_NNN_3_payload<payload_ld/2:
                 edit_operations=lv.editops(NNN_3_payload,_strand[end_point:end_point+len(NNN_3_payload)])
                 for op in edit_operations:
@@ -308,20 +319,24 @@ if __name__=="__main__":
     dir_sorted.sort()
 
     data_dictionary={}
+
     
+    #get the working set of sample files based on fq_range
     for _file in dir_sorted[lower_int:upper_int+1]: 
         if os.path.isfile(args.fq_dir+'/'+_file):
             sample_files.append(_file)
 
+    #create output directory for DORIS Data
     if not os.path.exists("DORIS_DATA"):
         os.mkdir("DORIS_DATA")
 
+    
     for fq_file in sample_files:
         print (fq_file)
         file_path=args.fq_dir+'/'+fq_file
         file_base_name=get_experiment_base_name(_file)
         sequence_strands=[line.rstrip('\n') for line in open(file_path)]
-        #generate result dictionary keys 
+        #generate result dictionary keys, count_key --> barcode counting, total_reads --> sum of all barcodes, error_rate --> positional error rate within the strand
         count_key=fq_file+"_"+"count"
         total_reads_key=fq_file+"_"+"total_reads"
         error_rate_key=fq_file+"_"+"error_rate"
@@ -350,7 +365,8 @@ if __name__=="__main__":
     error_rate_dump_path="DORIS_DATA/"+get_experiment_base_name(sample_files[0])+'_error_rate.csv'
     count_file=open(count_dump_path,'w+')
     error_rate_file=open(error_rate_dump_path,'w+')
-    
+
+    #arrange the error rate and conut results into individual directories to dump results as dataframes
     count_dict={}
     error_rate_dict={}
     for key in sorted(data_dictionary.keys()):
