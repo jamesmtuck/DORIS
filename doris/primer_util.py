@@ -61,7 +61,7 @@ def mutate_sequence(seq, d):
         while True:
             r = random.randint(0,len(seq)-2)
             #assert r != 19
-            if not used.has_key(r):
+            if r not in used:
                 break
         used[r] = 1
         c = random.choice('ACGT')
